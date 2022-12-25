@@ -1,0 +1,13 @@
+/* elements */
+
+.elements {
+    margin: 0 auto 0 auto;
+    padding-top: 35px;
+}
+
+
+@media screen and (max-width: 600px) {
+    .elements {
+        padding-top: 20px;
+    }
+}
