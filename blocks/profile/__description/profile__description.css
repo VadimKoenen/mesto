@@ -8,15 +8,16 @@
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
+    max-width: 340px;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 650px) {
     .profile__description {
         font-size: 14px;
         line-height: 17px;
         text-align: start;
         padding-top: 6px;
-        padding-left: 17px;
+        padding-left: 2px;
         margin: 0;
     }
 }

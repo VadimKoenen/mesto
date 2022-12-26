@@ -4,11 +4,13 @@
     display: flex;
     flex-direction: column;
     margin: 43px 0 41px 0;
+    border-bottom: 1px solid;
+    border-color: rgba(84, 84, 84, 1);
 }
 
 @media screen and (max-width: 600px) {
     .header {
         margin-top: 28px;
-        margin-bottom: 33px;
+        margin-bottom: 41px;
     }
 }

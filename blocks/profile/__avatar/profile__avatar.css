@@ -7,7 +7,7 @@
     object-position: center center;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 650px) {
     .profile__avatar {
         align-self: center;
         margin-bottom: 28px;

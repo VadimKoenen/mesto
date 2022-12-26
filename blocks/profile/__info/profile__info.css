@@ -4,4 +4,16 @@
     margin: 0;
     align-self: center;
     padding-left: 30px;
+    box-sizing:border-box;
+    width:auto;
+    max-width:100%;
+}
+
+
+
+@media screen and (max-width: 650px) {
+    .profile__info {
+        padding-left: 0;
+        align-items: center;
+    }
 }

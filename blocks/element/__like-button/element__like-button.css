@@ -14,14 +14,5 @@
     transition: opacity .5s linear;
   }
 
-  .element__like-button:visited {
-    background-image: url(../../../images/like-button-union.svg);
-    opacity: .5;
-    transition: opacity .5s linear;
-  }
 
-  .element__like-button:active {
-    background-image: url(../../../images/like-button-union.svg);
-    transition: background-image .2s linear;
-    opacity: 1;
-  }
+ 

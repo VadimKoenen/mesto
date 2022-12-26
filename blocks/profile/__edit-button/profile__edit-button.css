@@ -18,7 +18,7 @@
     transition: opacity .5s linear;
   }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 650px) {
     .profile__edit-button {
         width: 18px;
         height: 18px;
