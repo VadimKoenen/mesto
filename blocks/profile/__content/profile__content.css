@@ -1,9 +1,9 @@
 .profile__content {
     display: flex;
     flex-direction: row;
-   box-sizing:border-box;
-  width:auto;
-  max-width:100%;
+    box-sizing: border-box;
+    width: auto;
+    max-width: 100%;
 }
 
 @media screen and (max-width: 650px) {

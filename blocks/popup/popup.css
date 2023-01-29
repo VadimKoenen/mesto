@@ -6,19 +6,9 @@
     position: fixed;
     top: 0;
     left: 0;
-    display: flex;
+    display: none;
     color: black;
     justify-content: center;
     align-items: center;
-    visibility: hidden;
-    opacity: 0;
-    transition: all 0.3s linear;
+    transition: all 0.5s linear;
 }
-
-
-@media screen and (max-width: 600px) {
-    .popup {
-        align-items: flex-start;
-        padding-top: 182px;
-    }
-  }

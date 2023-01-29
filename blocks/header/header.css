@@ -5,7 +5,7 @@
     flex-direction: column;
     margin: 43px 0 41px 0;
     border-bottom: 1px solid;
-    border-color: rgba(84, 84, 84, 1);
+    border-color: rgba(84, 84, 84, .7);
 }
 
 @media screen and (max-width: 600px) {

@@ -18,5 +18,6 @@
         text-align: center;
         margin-left: 28px;
         padding-right: 10px;
+        max-width: 220px;
     }
 }
