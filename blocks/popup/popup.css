@@ -6,9 +6,11 @@
     position: fixed;
     top: 0;
     left: 0;
-    display: none;
+    display: flex;
+    visibility: hidden;
     color: black;
     justify-content: center;
     align-items: center;
-    transition: all 0.5s linear;
+    opacity: 0;
+    transition: all 0.3s linear;
 }

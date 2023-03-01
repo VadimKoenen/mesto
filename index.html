@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="места в России">
-  <meta name="keywords" content="html, css">
+  <meta name="keywords" content="html, css, js">
   <meta name="author" content="Vadim Koenen">
   <meta name="theme-color" content="#000000">
   <link rel="stylesheet" type="text/css" href="./pages/index.css">
@@ -24,63 +24,23 @@
           <div class="profile__info">
             <div class="profile__name-edit">
               <h1 class="profile__name">Жак-Ив Кусто</h1>
-              <button class="profile__edit-button" type="button"></button>
+              <button class="profile__edit-button" type="button" aria-label="Редактировать профиль"></button>
             </div>
             <p class="profile__description">Исследователь океана</p>
           </div>
         </div>
-        <button class="profile__add-button" type="button"></button>
+        <button class="profile__add-button" type="button" aria-label="Добавить карточку"></button>
       </section>
-      <section class="elements">
+
+      <div class="elements">
         <ul class="elements__list">
-          <li class="element">
-            <img class="element__image" src="./images/karachaevsk.png" alt="старая церковь">
-            <div class="element__about">
-              <h2 class="element__text">Карачаевск</h2>
-              <button class="element__like-button" type="button"></button>
-            </div>
-          </li>
-          <li class="element">
-            <img class="element__image" src="./images/elbrus.png" alt="горная местность">
-            <div class="element__about">
-              <h2 class="element__text">Гора Эльбрус</h2>
-              <button class="element__like-button" type="button"></button>
-            </div>
-          </li>
-          <li class="element">
-            <img class="element__image" src="./images/dombai.png" alt="гора">
-            <div class="element__about">
-              <h2 class="element__text">Домбай</h2>
-              <button class="element__like-button" type="button"></button>
-            </div>
-          </li>
-          <li class="element">
-            <img class="element__image" src="./images/elbrus.png" alt="горная местность">
-            <div class="element__about">
-              <h2 class="element__text">Гора Эльбрус</h2>
-              <button class="element__like-button" type="button"></button>
-            </div>
-          </li>
-          <li class="element">
-            <img class="element__image" src="./images/dombai.png" alt="гора">
-            <div class="element__about">
-              <h2 class="element__text">Домбай</h2>
-              <button class="element__like-button" type="button"></button>
-            </div>
-          </li>
-          <li class="element">
-            <img class="element__image" src="./images/karachaevsk.png" alt="старая церковь">
-            <div class="element__about">
-              <h2 class="element__text">Карачаево-Черкессия</h2>
-              <button class="element__like-button" type="button"></button>
-            </div>
-          </li>
         </ul>
-      </section>
+      </div>
     </main>
-    <section class="popup">
-      <div class="popup__content">
-        <button class="popup__close-button" type="button"></button>
+
+    <div class="popup popup-profile">
+      <div class="popup__container">
+        <button class="popup__close-button" type="button" aria-label="Закрыть"></button>
         <h2 class="popup__name">Редактировать профиль</h2>
         <form action="#" class="popup__form" name="addProfile">
           <input class="popup__text" type="text" value placeholder="Введите имя" name="addName" autocomplete="off">
@@ -89,9 +49,43 @@
           <button class="popup__save-button" type="submit" value="Сохранить" name="sendForm">Сохранить</button>
         </form>
       </div>
-    </section>
+    </div>
+
+    <div class="popup popup-cardadd">
+      <div class="popup__container">
+        <button class="popup__close-button" type="button" aria-label="Закрыть"></button>
+        <h2 class="popup__name">Новое место</h2>
+        <form action="#" class="popup__form popup-cardadd__form" name="addCard">
+          <input class="popup__text" type="text" value placeholder="Название" name="addNamePlace" autocomplete="off">
+          <input class="popup__text" type="url" value placeholder="Ссылка на картинку" name="Link" autocomplete="off">
+          <button class="popup__save-button" type="submit" value="Создать" name="sendForm">Создать</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="popup popup-picture">
+      <figure class="popup-picture__figure">
+        <button class="popup__close-button" type="button" aria-label="Закрыть"></button>
+        <img class="popup-picture__image" src="" alt="">
+        <figcaption>
+          <h2 class="popup-picture__heading"></h2>
+        </figcaption>
+      </figure>
+    </div>
+
+    <template class="elements-template">
+      <li class="element">
+        <button type="button" class="element__delete-button" aria-label="Удалить"></button>
+        <img class="element__image" src="" alt="">
+        <div class="element__about">
+          <h2 class="element__text"></h2>
+          <button class="element__like-button" type="button" aria-label="Лайк"></button>
+        </div>
+      </li>
+    </template>
+
     <footer class="footer">
-      <p class="footer__text">&#xa9;2022. Вадим Коенен</p>
+      <p class="footer__text">&#xa9;2023. Вадим Коенен</p>
     </footer>
   </div>
   <script src="./scripts/index.js"></script>
