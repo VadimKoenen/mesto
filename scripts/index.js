@@ -151,6 +151,8 @@ function submitForm(event) {
         link: imageInput.value
     });
     addCard(submitCard);
+    placeForm.reset();
+    closePopup(popupСardAdd);
 }
 
 //навешивание слушателя на отправку формы
