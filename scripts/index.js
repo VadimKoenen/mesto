@@ -34,18 +34,17 @@ const profileName = document.querySelector('.profile__name');
 const profileDescription = document.querySelector('.profile__description');
 const profileNameInpit = popup.querySelector('[name="addName"]');
 const profileDescriptionInput = popup.querySelector('[name="addDescription"]');
-const formElement = document.forms.addProfile;
+const formAddProfile = document.forms.addProfile;
 const elementLikeButtons = document.querySelectorAll('.element__like-button');
 const popupProfile = document.querySelector('.popup-profile');
 const buttonAddCard = document.querySelector('.profile__add-button');
 const popupСardAdd = document.querySelector('.popup-cardadd');
 const elements = document.querySelector('.elements__list');
 const popupPicture = document.querySelector('.popup-picture');
-const element = document.querySelector('.element');
 const popupPictureImage = popupPicture.querySelector('.popup-picture__image');
 const popupPictureHeading = popupPicture.querySelector('.popup-picture__heading');
 const popupAddPlace = document.querySelector('.popup-cardadd');
-const placeForm = popupAddPlace.querySelector('[name="addCard"]');
+const formAddPlace = document.forms.addCard;
 const placeInput = popupAddPlace.querySelector('[name="addNamePlace"]');
 const imageInput = popupAddPlace.querySelector('[name="Link"]');
 
@@ -55,11 +54,11 @@ function openPopup(popup) {
 };
 
 // внесение данных в форму и редактирование профиля
-function handleFormSubmit(event) {
+function submitFormProfile(event) {
     event.preventDefault();
     profileName.textContent = profileNameInpit.value;
     profileDescription.textContent = profileDescriptionInput.value;
-    closePopup(popup);
+    closePopup(popupProfile);
 };
 
 //открытие редактирования профиля
@@ -68,11 +67,11 @@ profileEditButton.addEventListener('click', (event) => {
     profileDescriptionInput.value = profileDescription.textContent;
     openPopup(popupProfile);
 });
-formElement.addEventListener('submit', handleFormSubmit);
+formAddProfile.addEventListener('submit', submitFormProfile);
 
 //закрытие попапа
-function closePopup(popups) {
-    popups.classList.remove('popup_open');
+function closePopup(popup) {
+    popup.classList.remove('popup_open');
 };
 
 // закрытие на крестик
@@ -81,14 +80,15 @@ popupCloseButtons.forEach(function (btn) {
     btn.addEventListener('click', (event) => closePopup(popup));
 });
 
+
 // закрытие при нажатие оверлей
-popupCloseButtons.forEach(function (btn) {
-    const popup = btn.closest('.popup');
+popups.forEach(function (popup) {
     popup.addEventListener('click', (event) => {
-        if (event.target === event.currentTarget)
-            closePopup(popup);
+        if (event.target === event.currentTarget) {
+            closePopup(popup)
+        }
     });
-})
+});
 
 //открытие попапа с добавлением карточки
 buttonAddCard.addEventListener('click', function () {
@@ -113,7 +113,7 @@ function openPopupZoom(event) {
     openPopup(popupPicture);
 }
 //функция навешивания слушателей на вновь создаваемую карточку
-function addEventListeners(card) {
+function addEventListenersCard(card) {
     card.querySelector('.element__image').addEventListener('click', openPopupZoom);
     card.querySelector('.element__like-button').addEventListener('click', likeCard);
     card.querySelector('.element__delete-button').addEventListener('click', deleteCard);
@@ -126,7 +126,7 @@ function createCard(card) {
     const cardImage = newCard.querySelector('.element__image')
     cardImage.setAttribute('src', card.link)
     cardImage.setAttribute('alt', card.name)
-    addEventListeners(newCard)
+    addEventListenersCard(newCard)
     return newCard
 }
 
@@ -144,20 +144,19 @@ function renderCards(cardsList) {
 }
 
 //функция сабмита добавления карточки
-function submitForm(event) {
+function submitFormCardAdd(event) {
     event.preventDefault();
     const submitCard = createCard({
         name: placeInput.value,
         link: imageInput.value
     });
     addCard(submitCard);
-    placeForm.reset();
+    formAddPlace.reset();
     closePopup(popupСardAdd);
 }
 
 //навешивание слушателя на отправку формы
-placeForm.addEventListener('submit', submitForm);
+formAddPlace.addEventListener('submit', submitFormCardAdd);
 
 // запуск рендера
 renderCards(cards);
-

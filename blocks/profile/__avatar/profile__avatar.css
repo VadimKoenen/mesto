@@ -5,6 +5,7 @@
     border-radius: 50%;
     object-fit: cover;
     object-position: center center;
+    color: #fff;
 }
 
 @media screen and (max-width: 650px) {

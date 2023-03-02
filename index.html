@@ -43,8 +43,8 @@
         <button class="popup__close-button" type="button" aria-label="Закрыть"></button>
         <h2 class="popup__name">Редактировать профиль</h2>
         <form action="#" class="popup__form" name="addProfile">
-          <input class="popup__text" type="text" value placeholder="Введите имя" name="addName" autocomplete="off">
-          <input class="popup__text" type="text" value placeholder="Введите описание" name="addDescription"
+          <input class="popup__text" type="text" value placeholder="Введите имя" name="addName" required autocomplete="off">
+          <input class="popup__text" type="text" value placeholder="Введите описание" required name="addDescription"
             autocomplete="off">
           <button class="popup__save-button" type="submit" value="Сохранить" name="sendForm">Сохранить</button>
         </form>
@@ -56,8 +56,8 @@
         <button class="popup__close-button" type="button" aria-label="Закрыть"></button>
         <h2 class="popup__name">Новое место</h2>
         <form action="#" class="popup__form popup-cardadd__form" name="addCard">
-          <input class="popup__text" type="text" value placeholder="Название" name="addNamePlace" autocomplete="off">
-          <input class="popup__text" type="url" value placeholder="Ссылка на картинку" name="Link" autocomplete="off">
+          <input class="popup__text" type="text" value placeholder="Название" name="addNamePlace" required autocomplete="off">
+          <input class="popup__text" type="url" value placeholder="Ссылка на картинку" name="Link" required autocomplete="off">
           <button class="popup__save-button" type="submit" value="Создать" name="sendForm">Создать</button>
         </form>
       </div>
