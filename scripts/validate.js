@@ -18,12 +18,17 @@ const showInputError = (formElement, inputElement, errorMessage, setup) => {
 // функция кнопки-сабмита
 const toggleButtonState = (inputs, buttonElement, setup) => {
     if (hasInvalidInput(inputs, setup)) {
-        buttonElement.classList.add(setup.inactiveButtonClass);
-        buttonElement.setAttribute('disabled', true);
+        disableButton(buttonElement, setup);
     } else {
         buttonElement.classList.remove(setup.inactiveButtonClass);
         buttonElement.removeAttribute('disabled');
     }
+};
+
+// функция удаления стиля с кнопки
+function disableButton(buttonElement, setup) {
+    buttonElement.classList.add(setup.inactiveButtonClass);
+    buttonElement.setAttribute('disabled', true);
 };
 
 // функция удаления ошибки
@@ -56,6 +61,9 @@ const setEventListeners = (formElement, setup) => {
     const inputs = Array.from(formElement.querySelectorAll(setup.inputSelector));
     const buttonElement = formElement.querySelector(setup.submitButtonSelector);
     toggleButtonState(inputs, buttonElement, setup);
+    formElement.addEventListener('reset', function () {
+        disableButton(buttonElement, setup);
+    });
     inputs.forEach((inputElement) => {
         inputElement.addEventListener('input', function () {
             checkInputValidity(formElement, inputElement, setup);

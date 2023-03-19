@@ -28,14 +28,12 @@ const cards = [
 
 const profileEditButton = document.querySelector('.profile__edit-button');
 const popups = document.querySelectorAll('.popup');
-const popup = document.querySelector('.popup');
 const popupCloseButtons = document.querySelectorAll('.popup__close-button');
 const profileName = document.querySelector('.profile__name');
 const profileDescription = document.querySelector('.profile__description');
-const profileNameInpit = popup.querySelector('[name="addName"]');
-const profileDescriptionInput = popup.querySelector('[name="addDescription"]');
+const profileNameInpit = document.querySelector('[name="addName"]');
+const profileDescriptionInput = document.querySelector('[name="addDescription"]');
 const formAddProfile = document.forms.addProfile;
-const elementLikeButtons = document.querySelectorAll('.element__like-button');
 const popupProfile = document.querySelector('.popup-profile');
 const buttonAddCard = document.querySelector('.profile__add-button');
 const popupСardAdd = document.querySelector('.popup-cardadd');
@@ -60,6 +58,7 @@ function submitFormProfile(event) {
     profileName.textContent = profileNameInpit.value;
     profileDescription.textContent = profileDescriptionInput.value;
     closePopup(popupProfile);
+    formAddProfile.reset();
 };
 
 //открытие редактирования профиля
@@ -93,7 +92,6 @@ popups.forEach(function (popup) {
 });
 
 // закрытие на клавишу ESC
-
 function closeByEsc(event) {
     if (event.key === 'Escape') {
         const openPopup = document.querySelector('.popup_open');
@@ -106,8 +104,8 @@ buttonAddCard.addEventListener('click', function () {
     openPopup(popupСardAdd);
 });
 
-// функция лайк  
-function likeCard(event) {
+// функция лайка  
+function toggleLike(event) {
     event.target.classList.toggle('element__like-button_active');
 };
 
@@ -126,7 +124,7 @@ function openPopupZoom(event) {
 //функция навешивания слушателей на вновь создаваемую карточку
 function addEventListenersCard(card) {
     card.querySelector('.element__image').addEventListener('click', openPopupZoom);
-    card.querySelector('.element__like-button').addEventListener('click', likeCard);
+    card.querySelector('.element__like-button').addEventListener('click', toggleLike);
     card.querySelector('.element__delete-button').addEventListener('click', deleteCard);
 };
 //функция создания карточки
