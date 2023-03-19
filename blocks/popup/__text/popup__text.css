@@ -5,7 +5,7 @@
   font-weight: 400;
   font-size: 14px;
   line-height: 26px;
-  margin: 0 0 28px 35px;
+  margin: 0 0 30px 35px;
 }
 
 @media screen and (max-width: 600px) {
@@ -14,4 +14,9 @@
     margin-left: 20px;
     line-height: 29px;
   }
+}
+
+.popup__text_error {
+  border-bottom: 1px solid red;
+  margin-bottom: 0px;
 }

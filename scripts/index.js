@@ -51,6 +51,7 @@ const imageInput = popupAddPlace.querySelector('[name="Link"]');
 //открытие попапа
 function openPopup(popup) {
     popup.classList.add('popup_open');
+    document.addEventListener('keydown', closeByEsc);
 };
 
 // внесение данных в форму и редактирование профиля
@@ -72,6 +73,7 @@ formAddProfile.addEventListener('submit', submitFormProfile);
 //закрытие попапа
 function closePopup(popup) {
     popup.classList.remove('popup_open');
+    document.removeEventListener('keydown', closeByEsc);
 };
 
 // закрытие на крестик
@@ -89,6 +91,15 @@ popups.forEach(function (popup) {
         }
     });
 });
+
+// закрытие на клавишу ESC
+
+function closeByEsc(event) {
+    if (event.key === 'Escape') {
+        const openPopup = document.querySelector('.popup_open');
+        closePopup(openPopup);
+    };
+};
 
 //открытие попапа с добавлением карточки
 buttonAddCard.addEventListener('click', function () {

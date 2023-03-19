@@ -42,10 +42,13 @@
       <div class="popup__container">
         <button class="popup__close-button" type="button" aria-label="Закрыть"></button>
         <h2 class="popup__name">Редактировать профиль</h2>
-        <form action="#" class="popup__form" name="addProfile">
-          <input class="popup__text" type="text" value placeholder="Введите имя" name="addName" required autocomplete="off">
-          <input class="popup__text" type="text" value placeholder="Введите описание" required name="addDescription"
-            autocomplete="off">
+        <form action="#" class="popup__form" name="addProfile" novalidate>
+          <input class="popup__text" type="text" id="addName" value placeholder="Введите имя" name="addName" required
+            autocomplete="off" minlength="2" maxlength="40">
+          <span class="addName-error"></span>
+          <input class="popup__text" type="text" id="addDescription" value placeholder="Введите описание" required
+            name="addDescription" autocomplete="off" minlength="2" maxlength="200">
+          <span class="addDescription-error"></span>
           <button class="popup__save-button" type="submit" value="Сохранить" name="sendForm">Сохранить</button>
         </form>
       </div>
@@ -55,9 +58,13 @@
       <div class="popup__container">
         <button class="popup__close-button" type="button" aria-label="Закрыть"></button>
         <h2 class="popup__name">Новое место</h2>
-        <form action="#" class="popup__form popup-cardadd__form" name="addCard">
-          <input class="popup__text" type="text" value placeholder="Название" name="addNamePlace" required autocomplete="off">
-          <input class="popup__text" type="url" value placeholder="Ссылка на картинку" name="Link" required autocomplete="off">
+        <form action="#" class="popup__form popup-cardadd__form" name="addCard" novalidate>
+          <input class="popup__text" type="text" value placeholder="Название" name="addNamePlace" id="addNamePlace"
+            required autocomplete="off" minlength="2" maxlength="30">
+          <span class=" addNamePlace-error"></span>
+          <input class="popup__text" type="url" value placeholder="Ссылка на картинку" name="Link" id="Link" required
+            autocomplete="off">
+          <span class="Link-error"></span>
           <button class="popup__save-button" type="submit" value="Создать" name="sendForm">Создать</button>
         </form>
       </div>
@@ -89,6 +96,7 @@
     </footer>
   </div>
   <script src="./scripts/index.js"></script>
+  <script src="./scripts/validate.js"></script>
 </body>
 
 </html>
