@@ -1,30 +1,6 @@
-//CONST
-const cards = [
-    {
-        name: 'Архыз',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-    },
-    {
-        name: 'Челябинская область',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-    },
-    {
-        name: 'Иваново',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-    },
-    {
-        name: 'Камчатка',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-    },
-    {
-        name: 'Холмогорский район',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-    },
-    {
-        name: 'Байкал',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-    }
-];
+import Card from "./Card.js";
+import FormValidator from "./FormValidator.js";
+import cards from "./cards.js";
 
 const profileEditButton = document.querySelector('.profile__edit-button');
 const popups = document.querySelectorAll('.popup');
@@ -36,7 +12,7 @@ const profileDescriptionInput = document.querySelector('[name="addDescription"]'
 const formAddProfile = document.forms.addProfile;
 const popupProfile = document.querySelector('.popup-profile');
 const buttonAddCard = document.querySelector('.profile__add-button');
-const popupСardAdd = document.querySelector('.popup-cardadd');
+const popupCardAdd = document.querySelector('.popup-cardadd');
 const elements = document.querySelector('.elements__list');
 const popupPicture = document.querySelector('.popup-picture');
 const popupPictureImage = popupPicture.querySelector('.popup-picture__image');
@@ -45,6 +21,21 @@ const popupAddPlace = document.querySelector('.popup-cardadd');
 const formAddPlace = document.forms.addCard;
 const placeInput = popupAddPlace.querySelector('[name="addNamePlace"]');
 const imageInput = popupAddPlace.querySelector('[name="Link"]');
+
+
+
+const setup = {
+    formSelector: '.popup__form',
+    inputSelector: '.popup__text',
+    submitButtonSelector: '.popup__save-button',
+    inactiveButtonClass: 'popup__save-button_disabled',
+    inputErrorClass: 'popup__text_error',
+    errorClass: 'popup__error-text_active',
+};
+
+const formProfileValidator = new FormValidator(setup, formAddProfile);
+const formAddCardValidator = new FormValidator(setup, formAddPlace);
+
 
 //открытие попапа
 function openPopup(popup) {
@@ -101,71 +92,46 @@ function closeByEsc(event) {
 
 //открытие попапа с добавлением карточки
 buttonAddCard.addEventListener('click', function () {
-    openPopup(popupСardAdd);
+    openPopup(popupCardAdd);
 });
 
-// функция лайка  
-function toggleLike(event) {
-    event.target.classList.toggle('element__like-button_active');
-};
-
-// функция удаления карточки
-function deleteCard(event) {
-    event.currentTarget.closest('.element').remove();
-}
-
 //функция открытия третьего попапа:
-function openPopupZoom(event) {
-    popupPictureHeading.textContent = event.target.alt;
-    popupPictureImage.src = event.target.src;
-    popupPictureImage.alt = event.target.alt;
+function openPopupZoom(name, link) {
+    popupPictureHeading.textContent = name;
+    popupPictureImage.src = link;
+    popupPictureImage.alt = name;
     openPopup(popupPicture);
 }
-//функция навешивания слушателей на вновь создаваемую карточку
-function addEventListenersCard(card) {
-    card.querySelector('.element__image').addEventListener('click', openPopupZoom);
-    card.querySelector('.element__like-button').addEventListener('click', toggleLike);
-    card.querySelector('.element__delete-button').addEventListener('click', deleteCard);
-};
-//функция создания карточки
-function createCard(card) {
-    const newCard = document.querySelector('.elements-template').content.cloneNode(true)
-    const elementText = newCard.querySelector('.element__text')
-    elementText.textContent = card.name
-    const cardImage = newCard.querySelector('.element__image')
-    cardImage.setAttribute('src', card.link)
-    cardImage.setAttribute('alt', card.name)
-    addEventListenersCard(newCard)
-    return newCard
+
+function generateCard(data) {
+    const card = new Card(data, '.elements-template', openPopupZoom);
+    return card.generateCard();
 }
 
-//функция добавления карточки
-function addCard(card) {
-    elements.prepend(card);
+function prependCard(data) {
+    elements.prepend(generateCard(data));
 }
 
-//функция рендера карточки
-function renderCards(cardsList) {
-    cardsList.forEach(item => {
-        const cardHtml = createCard(item);
-        addCard(cardHtml);
+function renderStartCards() {
+    cards.reverse().forEach(data => {
+        prependCard(data);
     });
-}
+};
 
-//функция сабмита добавления карточки
-function submitFormCardAdd(event) {
+function handleCardSubmit(event) {
     event.preventDefault();
-    const submitCard = createCard({
+    prependCard({
         name: placeInput.value,
         link: imageInput.value
     });
-    addCard(submitCard);
     formAddPlace.reset();
-    closePopup(popupСardAdd);
+    closePopup(popupCardAdd);
 }
 
-//навешивание слушателя на отправку формы
-formAddPlace.addEventListener('submit', submitFormCardAdd);
+formAddPlace.addEventListener('submit', handleCardSubmit);
 
-// запуск рендера
-renderCards(cards);
+renderStartCards();
+formProfileValidator.enableValidation();
+formAddCardValidator.enableValidation();
+
+
