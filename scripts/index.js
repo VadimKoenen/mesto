@@ -124,8 +124,9 @@ function handleCardSubmit(event) {
         name: placeInput.value,
         link: imageInput.value
     });
-    formAddPlace.reset();
     closePopup(popupCardAdd);
+    formAddPlace.reset();
+    formAddCardValidator.enableValidation()
 }
 
 formAddPlace.addEventListener('submit', handleCardSubmit);

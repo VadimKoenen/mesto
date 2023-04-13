@@ -23,7 +23,7 @@
       padding: 15px 0 14px 0;
     }
   }
-.popup__save-button:hover {
+.popup__save-button:not([disabled]):hover {
     opacity: .8;
     transition: opacity .5s linear;
 }

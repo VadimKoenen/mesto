@@ -13,7 +13,7 @@ export default class Card {
   _setListeners() {
     this._card.querySelector('.element__delete-button').addEventListener('click', () => this._deleteCard());
     this._elementLikeButton.addEventListener('click', () => this._likeCard());
-    this._cardImage.addEventListener('click', () => this._openPopupZoom(this._name, this._link, this._fotoName));
+    this._cardImage.addEventListener('click', () => this._openPopupZoom(this._name, this._link));
   }
 
   _deleteCard() {

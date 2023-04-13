@@ -27,6 +27,12 @@ export default class FormValidator {
     errorElement.textContent = '';
   }
 
+// неактивная кнопка
+_disableButton() {
+  this._buttonElement.classList.add(this._setup.inactiveButtonClass);
+  this._buttonElement.setAttribute('disabled', true);
+};
+
   // смена статуса кнопки
   _toggleButtonState() {
     if (this._hasInvalidInput()) {
@@ -37,11 +43,6 @@ export default class FormValidator {
       this._buttonElement.removeAttribute('disabled');
     }
   }
-// неактивная кнопка
-  _disableButton() {
-    this._buttonElement.classList.add(this._setup.inactiveButtonClass);
-    this._buttonElement.setAttribute('disabled', true);
-  };
 
 //слушатели
   enableValidation() {
