@@ -8,20 +8,18 @@
   <meta name="keywords" content="html, css, js">
   <meta name="author" content="Vadim Koenen">
   <meta name="theme-color" content="#000000">
-  <link rel="stylesheet" type="text/css" href="./pages/index.css">
-  <script type='module' src="./scripts/index.js" defer></script>
   <title>Mesto Russia</title>
 </head>
 
 <body class="body">
   <div class="page">
     <header class="header">
-      <img class="header__logo" alt="Место Россия" src="./images/logo.svg">
+      <img class="header__logo" alt="Место Россия" src="<%=require('./images/logo.svg')%>">
     </header>
     <main class="content">
       <section class="profile">
         <div class="profile__content">
-          <img class="profile__avatar" src="./images/avatar.png" alt="аватар профиля">
+          <img class="profile__avatar" src="<%=require('./images/avatar.png')%>" alt="аватар профиля">
           <div class="profile__info">
             <div class="profile__name-edit">
               <h1 class="profile__name">Жак-Ив Кусто</h1>
