@@ -7,10 +7,12 @@ export default class Popup {
     //открытие
     open() {
         this._popup.classList.add('popup_open');
+        window.addEventListener('keydown', this._handleEscClose);
     }
     //закрытие
     close() {
         this._popup.classList.remove('popup_open');
+        window.removeEventListener('keydown', this._handleEscClose);
     }
 
     //закрытие ESC
@@ -27,11 +29,7 @@ export default class Popup {
                 this.close();
             }
         });
-        //закрытие esc
-        window.addEventListener("keydown", (event) => {
-            this._handleEscClose(event);//esc
-        });
-
+        
         //закрытие по клику на кнопку закрыть
         this._popup.querySelector('.popup__close-button').addEventListener('click', () => this.close());
     }
