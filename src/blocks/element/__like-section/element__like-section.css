@@ -1,0 +1,6 @@
+.elements__like-section {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    margin-right: 21px;
+  }

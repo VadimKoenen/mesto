@@ -37,3 +37,6 @@
 @import url(../blocks/footer/__text/footer__text.css);
 @import url(../blocks/popup/__save-button/_disabled/popup__save-button_disabled.css);
 @import url(../blocks/popup/__error-text/_active/popup__error-text_active.css);
+@import url(../blocks/profile/__overlay/profile__overlay.css);
+@import url(../blocks/element/__like-meter/element__like-meter.css);
+@import url(../blocks/element/__like-section/element__like-section.css);
