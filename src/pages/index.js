@@ -1,47 +1,33 @@
-import Card from "../components/Card.js";
-import FormValidator from "../components/FormValidator.js";
-import Section from "../components/Section.js";
-import PopupWithImage from "../components/PopupWithImage.js";
-import PopupWithForm from "../components/PopupWithForm.js";
-import PopupWithConfirm from "../components/PopupWithConfirm.js";
-import UserInfo from "../components/UserInfo.js";
-import Api from "../components/Api.js";
+import Card from '../components/Card.js';
+import FormValidator from '../components/FormValidator.js';
+import Section from '../components/Section.js';
+import PopupWithImage from '../components/PopupWithImage.js';
+import PopupWithForm from '../components/PopupWithForm.js';
+import PopupWithConfirm from '../components/PopupWithConfirm.js';
+import UserInfo from '../components/UserInfo.js';
+import Api from '../components/Api.js';
 import './index.css';
 
-const profileEditButton = document.querySelector('.profile__edit-button');
-const popups = document.querySelectorAll('.popup');
-const popupCloseButtons = document.querySelectorAll('.popup__close-button');
-const profileName = document.querySelector('.profile__name');
-const profileDescription = document.querySelector('.profile__description');
-const profileNameInpit = document.querySelector('.popup__text_profile-name');
-const profileDescriptionInput = document.querySelector('.popup__text_profile-about');
-const profileAvatar = document.querySelector('.profile__avatar');
-const avatarInput = document.querySelector('.popup__text_avatar-link');
-const formAvatar = document.forms.addAvatar;
-const avatarEditButton = document.querySelector('.profile__overlay');
-const formAddProfile = document.forms.addProfile;
-const popupProfile = document.querySelector('.popup-profile');
+import {
+  profileEditButton,
+  profileName,
+  profileDescription,
+  profileNameInpit,
+  profileDescriptionInput,
+  profileAvatar,
+  formAvatar,
+  avatarEditButton,
+  popupPicture,
+  formAddProfile,
+  buttonAddCard,
+  elements,
+  popupPictureImage,
+  popupPictureHeading,
+  formAddPlace,
+  setup,
+} from '../utils/constants.js';
 
-const buttonAddCard = document.querySelector('.profile__add-button');
-const popupCardAdd = document.querySelector('.popup-cardadd');
-const popupAvatar = document.querySelector('.popup-avatar');
-const elements = document.querySelector('.elements__list');
-const popupPicture = document.querySelector('.popup-picture');
-const popupPictureImage = popupPicture.querySelector('.popup-picture__image');
-const popupPictureHeading = popupPicture.querySelector('.popup-picture__heading');
-const popupAddPlace = document.querySelector('.popup-cardadd');
-const formAddPlace = document.forms.addCard;
-const placeInput = popupAddPlace.querySelector('.popup__text_card-name');
-const imageInput = popupAddPlace.querySelector('.popup__text_card-link');
 
-const setup = {
-  formSelector: '.popup__form',
-  inputSelector: '.popup__text',
-  submitButtonSelector: '.popup__save-button',
-  inactiveButtonClass: 'popup__save-button_disabled',
-  inputErrorClass: 'popup__text_error',
-  errorClass: 'popup__error-text_active',
-};
 // валидация
 const formProfileValidator = new FormValidator(setup, formAddProfile);
 const formAddCardValidator = new FormValidator(setup, formAddPlace);
@@ -63,7 +49,9 @@ let userId = null;
 const popupWithImage = new PopupWithImage(
   '.popup-picture',
   popupPictureImage,
-  popupPictureHeading);
+  popupPictureHeading
+);
+
 // Слушатели Попапа с картинкой
 popupWithImage.setListeners();
 
@@ -137,19 +125,22 @@ popupWithConfirm.setEventListeners();
 
 //слушатель событий по кнопке редактирования профиля
 profileEditButton.addEventListener('click', () => {
+  formProfileValidator.clearErrorForm()
   const userData = userInfo.getUserInfo();
   profileNameInpit.value = userData.name;
   profileDescriptionInput.value = userData.about;
   popupProfileEdit.open();
 });
+
 //открытие кнопки добавления карточек
 buttonAddCard.addEventListener('click', () => {
+  formAddCardValidator.clearErrorForm()
   popupAddPlaceEdit.open();
-  formAddCardValidator.enableValidation()
 });
 
 //слушатель оверлея аватара
 avatarEditButton.addEventListener('click', () => {
+  formAvatarValidator.clearErrorForm()
   popupAvatarEdit.open();
 });
 
